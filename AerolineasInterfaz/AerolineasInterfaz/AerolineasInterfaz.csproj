@@ -53,10 +53,74 @@
     <Compile Include="Aerolineas.Designer.cs">
       <DependentUpon>Aerolineas.cs</DependentUpon>
     </Compile>
+    <Compile Include="DestinoBorrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DestinoBorrar.Designer.cs">
+      <DependentUpon>DestinoBorrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DestinoListado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DestinoListado.Designer.cs">
+      <DependentUpon>DestinoListado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DestinoModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DestinoModificar.Designer.cs">
+      <DependentUpon>DestinoModificar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Destinos.cs" />
+    <Compile Include="DGV.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DGV.Designer.cs">
+      <DependentUpon>DGV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PasajeroBorrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasajeroBorrar.Designer.cs">
+      <DependentUpon>PasajeroBorrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PasajeroListado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasajeroListado.Designer.cs">
+      <DependentUpon>PasajeroListado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PasajeroModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasajeroModificar.Designer.cs">
+      <DependentUpon>PasajeroModificar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Aerolineas.resx">
       <DependentUpon>Aerolineas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DestinoBorrar.resx">
+      <DependentUpon>DestinoBorrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DestinoListado.resx">
+      <DependentUpon>DestinoListado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DestinoModificar.resx">
+      <DependentUpon>DestinoModificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DGV.resx">
+      <DependentUpon>DGV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasajeroBorrar.resx">
+      <DependentUpon>PasajeroBorrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasajeroListado.resx">
+      <DependentUpon>PasajeroListado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasajeroModificar.resx">
+      <DependentUpon>PasajeroModificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -66,6 +130,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -89,6 +154,11 @@
       <Project>{338b7fe2-9c44-483a-a846-2c6362b47e29}</Project>
       <Name>AerolineasObjetos</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Aerolineas.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

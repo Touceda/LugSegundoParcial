@@ -9,8 +9,11 @@ namespace AerolineasObjetos
     //la fecha/hora de partida y llegada 
     public class Vuelo
     {
-        private Destino lugadDestino;
-        public Destino LugarDestino { get { return lugadDestino; } set { lugadDestino = value; } }
+        public int nroVuelo;
+        public int NroVuelo { get { return nroVuelo; } set { nroVuelo = value; } }
+
+        private string lugadDestino;
+        public string LugarDestino { get { return lugadDestino; } set { lugadDestino = value; } }
 
         private string partida;//Fecha/Hora de partida
         public string Partida { get { return partida; } set { partida = value; } }
@@ -18,14 +21,19 @@ namespace AerolineasObjetos
         private string llegada;//Fecha/Hora de llegada
         public string Llegada { get { return llegada; } set { llegada = value; } }
 
-        public int asientosDisponibles;
-        public int AsientosDisponibles { get { return asientosDisponibles; } set { asientosDisponibles = value; } }
-        public Vuelo(Destino cLugarDestsino, string cPartida, string cLlegada, int cAsientosDisponibles)
+        public int asientos;
+        public int Asientos { get { return asientos; } set { asientos = value; } }
+
+        public int ocupacion;
+        public int Ocupacion { get { return ocupacion; } set { ocupacion = value; } }
+        public Vuelo(int cNroVuelo, string cLugarDestsino, string cPartida, string cLlegada, int cAsientos, int cOcupacion = 0)
         {
+            this.nroVuelo = cNroVuelo;
             this.lugadDestino = cLugarDestsino;
             this.partida = cPartida;
             this.llegada = cLlegada;
-            this.asientosDisponibles = cAsientosDisponibles;
+            this.asientos = cAsientos;
+            this.ocupacion = cOcupacion;
         }
     }
     //internacionales en éste último se registra además de la ciudad de destino y el país
@@ -38,13 +46,15 @@ namespace AerolineasObjetos
         private string ciudad;
         public string Ciudad { get { return ciudad; } set { ciudad = value; } }
 
-        public VueloInternacional(Destino cLugarDestsino, string cPartida, string cLlegada, int cAsientosDisponibles, string cPais, string cCiudad)
-        : base(cLugarDestsino, cPartida, cLlegada, cAsientosDisponibles)
+        public VueloInternacional(int cNroVuelo, string cLugarDestsino, string cPartida, string cLlegada, int cAsientos, int cOcupacion, string cPais, string cCiudad)
+        : base(cNroVuelo, cLugarDestsino, cPartida, cLlegada, cAsientos, cOcupacion)
         {
+            this.NroVuelo = cNroVuelo;
             this.LugarDestino = cLugarDestsino;
             this.Partida = cPartida;
             this.Llegada = cLlegada;
-            this.AsientosDisponibles = cAsientosDisponibles;
+            this.Asientos = cAsientos;
+            this.Ocupacion = cOcupacion;
             this.pais = cPais;
             this.ciudad = cCiudad;
         }

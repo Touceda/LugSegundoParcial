@@ -66,20 +66,23 @@ namespace AerolineasImplementacion
                 return "Ocurrio un error, intentelo mas tarde";
             }          
         }
-        public string PasajeroModificar(int dni, Pasajero Pasajero)
+        public string PasajeroModificar(int dni, Pasajero Pasajero,bool revisarDNI)
         {
             try
             {
-                DataTable PasajerosTabla = ConexionPasajeros.BuscarPasajeros();
-
-                foreach (DataRow fila in PasajerosTabla.Rows)//Reviso que no se repita el dni
+                if (revisarDNI)
                 {
-                    int dnii = int.Parse(fila[0].ToString());
-                    if (dnii == Pasajero.Dni)
+                    DataTable PasajerosTabla = ConexionPasajeros.BuscarPasajeros();
+                    foreach (DataRow fila in PasajerosTabla.Rows)//Reviso que no se repita el dni
                     {
-                        return "El nuevo DNI ya se encuentra registrado, no es posible realizar la modificacion, intentelo mas tarde";
+                        int dnii = int.Parse(fila[0].ToString());
+                        if (dnii == Pasajero.Dni)
+                        {
+                            return "El nuevo DNI ya se encuentra registrado, no es posible realizar la modificacion, intentelo mas tarde";
+                        }
                     }
                 }
+               
 
                 List<SqlParameter> Parametros = new List<SqlParameter>();
                 Parametros.Add(Paramiters.CrearParametro("@dni", dni));

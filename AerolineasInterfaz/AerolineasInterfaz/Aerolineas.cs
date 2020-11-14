@@ -26,9 +26,17 @@ namespace AerolineasInterfaz
         private void Aerolineas_Load(object sender, EventArgs e)
         {
             AerolineaLogica = new AerolineaLogica();
-            List<Pasajero> ListaDePasajeros = AerolineaLogica.Pasajero.PasajeroLeer();
-            Aerolinea = new Aerolinea(ListaDePasajeros);
+            List<Pasajero> ListaDePasajeros = AerolineaLogica.Pasajeros.PasajeroLeer();
+            List<Destino> ListaDeDestinos = AerolineaLogica.Destinos.DestinosLeer();
+            List<Vuelo> ListaDeVuelos = AerolineaLogica.Vuelos.DestinosLeer(true);
+            Aerolinea = new Aerolinea(ListaDePasajeros, ListaDeDestinos, ListaDeVuelos);
+            Refresh();
             
+        }
+
+        private void Aerolineas_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawImage(Properties.Resources.Aerolineas, new Rectangle(new Point(-20, 20), new Size(this.Width, this.Height)));
         }
 
         #region Interfaz De Pasajero
@@ -52,25 +60,102 @@ namespace AerolineasInterfaz
             catch (Exception)
             {
                 MessageBox.Show("Se a ingresado un dato invalido", "ERROR");
+                return;
             }
 
-            string MensajePersonalizado = AerolineaLogica.Pasajero.PasajeroAñadir(new Pasajero(dni, nombre, apellido));
+            string MensajePersonalizado = AerolineaLogica.Pasajeros.PasajeroAñadir(new Pasajero(dni, nombre, apellido));
+            Aerolinea.Pasajeros = AerolineaLogica.Pasajeros.PasajeroLeer();
             MessageBox.Show(MensajePersonalizado, "Aerolineas");
 
+        }
+        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PasajeroModificar PM = new PasajeroModificar(Aerolinea, AerolineaLogica);
+            PM.ShowDialog();
+            Aerolinea = PM.aerolinea;
+            AerolineaLogica = PM.aerolineaLogica;
+            PM.Close();
+        }
+        private void borrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PasajeroBorrar PB = new PasajeroBorrar(Aerolinea, AerolineaLogica);
+            PB.ShowDialog();
+            Aerolinea = PB.aerolinea;
+            AerolineaLogica = PB.aerolineaLogica;
+            PB.Close();
+            AerolineaLogica.Pasajeros.PasajeroBorrar(200);
+
+        }
+        private void verListadoDePasajerosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PasajeroListado PL = new PasajeroListado(Aerolinea.Pasajeros);
+            PL.ShowDialog();
+            PL.Close();
         }
 
         #endregion
 
-        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        #region Interfaz De Destinos
+        private void añadirToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-          
-            string MensajePersonalizado = AerolineaLogica.Pasajero.PasajeroModificar();
+            string lugarDestino = "";
+            string ubicacionMaps = "";
+            try
+            {
+                lugarDestino = Interaction.InputBox("Cual es el nuevo lugar Destino?", "Nuevo Destino");
+                ubicacionMaps = Interaction.InputBox("Coloque el Link del maps para poder ver los destinos EJ: https://www.google.com.ar/maps/@-34.6342485,-58.469787,14z", "Nuevo Destino");
+
+                if (lugarDestino.Length <= 2 || ubicacionMaps.Length <= 2)
+                {
+                    MessageBox.Show("Los datos ingresados son muy cortos para ser datos reales", "ERROR");
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Se a ingresado un dato invalido", "ERROR");
+                return;
+            }
+
+            string MensajePersonalizado = AerolineaLogica.Destinos.DestinoAñadir(new Destino(lugarDestino, ubicacionMaps));
+            Aerolinea.Destinos = AerolineaLogica.Destinos.DestinosLeer();
+            MessageBox.Show(MensajePersonalizado, "Aerolineas");
         }
 
-        private void borrarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void modificarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            AerolineaLogica.Pasajero.PasajeroBorrar(200);
-            
+            DestinoModificar DM = new DestinoModificar(Aerolinea, AerolineaLogica);
+            DM.ShowDialog();
+            Aerolinea = DM.aerolinea;
+            AerolineaLogica = DM.aerolineaLogica;
+            DM.Close();
         }
+
+        private void borrarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DestinoBorrar DB = new DestinoBorrar(Aerolinea, AerolineaLogica);
+            DB.ShowDialog();
+            Aerolinea = DB.aerolinea;
+            AerolineaLogica = DB.aerolineaLogica;
+            DB.Close();
+        }
+
+        private void verListadoDeDestinosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DestinoListado DL = new DestinoListado(Aerolinea.Destinos);
+            DL.ShowDialog();
+            DL.Close();
+        }
+
+        #endregion
+
+        #region Interfaz De Vuelos Comunes
+
+        #endregion
+
+        #region Interfaz De Vuelos Comunes
+
+        #endregion
+
     }
 }

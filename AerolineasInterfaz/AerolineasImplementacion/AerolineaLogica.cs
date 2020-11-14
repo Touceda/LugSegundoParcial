@@ -8,20 +8,21 @@ namespace AerolineasImplementacion
 {
     public class AerolineaLogica
     {
-        private PasajeroLogica pasajero;
-        public PasajeroLogica Pasajero { get { return pasajero; } }
 
-        private DestinoLogica destino;
-        public DestinoLogica Destino { get { return destino; } }
+        private PasajeroLogica pasajeros;
+        public PasajeroLogica Pasajeros { get { return pasajeros; } }
 
-        private VueloLogica vuelo;
-        public VueloLogica Vuelo { get { return vuelo; } }
+        private DestinoLogica destinos;
+        public DestinoLogica Destinos { get { return destinos; } }
+
+        private VueloLogica vuelos;
+        public VueloLogica Vuelos { get { return vuelos; } }
 
         public AerolineaLogica()
         {
-            this.pasajero = new PasajeroLogica();
-            this.destino = new DestinoLogica();
-            this.vuelo = new VueloLogica();
+            this.pasajeros = new PasajeroLogica();
+            this.destinos = new DestinoLogica();
+            this.vuelos = new VueloLogica();
         }
 
     }

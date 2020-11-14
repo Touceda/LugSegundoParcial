@@ -11,7 +11,9 @@ namespace AccesoSQL
     {
         private SqlConnection conexion;
         public SqlConnection Conexion { get { return conexion; } }
+
         private string sqlDirecction = @"Data Source=DESKTOP-4EMC1D1;Initial Catalog=Aerolineas;Integrated Security=True";
+
         public SqlConnection Conectar()
         {
             //Evita crear una nueva conexion cunado ya tenemos una activa

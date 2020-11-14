@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccesoDestinos.cs" />
     <Compile Include="AccesoPasajeros.cs" />
+    <Compile Include="AccesoVuelos.cs" />
     <Compile Include="Conect.cs" />
     <Compile Include="Parametros.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

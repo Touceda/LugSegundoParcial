@@ -92,8 +92,9 @@ namespace AerolineasImplementacion
                 ConexionPasajeros.ModificarPasajero(Parametros);
                 return "Modificacion realizada con exito";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string x = ex.ToString();
                 return "Ocurrio un error, Intentelo mas tarde";
             }        
         }

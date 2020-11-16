@@ -44,12 +44,17 @@
             this.comunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.internacionalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darDeVajaUnVueloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verVuelosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comunesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.internacionalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.llenarVuelosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comunesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.internacionalesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.verVuelosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comunesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.internacionalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verVuelosFinalizadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verVuelosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.comunesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.internacionalesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.BarraMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +64,8 @@
             this.BarraMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pasajerosToolStripMenuItem,
             this.destinosToolStripMenuItem,
-            this.vuelosToolStripMenuItem});
+            this.vuelosToolStripMenuItem,
+            this.salirToolStripMenuItem});
             this.BarraMenu.Location = new System.Drawing.Point(0, 0);
             this.BarraMenu.Name = "BarraMenu";
             this.BarraMenu.Size = new System.Drawing.Size(722, 24);
@@ -150,7 +156,9 @@
             this.darDeAltaUnVueloToolStripMenuItem,
             this.darDeVajaUnVueloToolStripMenuItem,
             this.llenarVuelosToolStripMenuItem,
-            this.verVuelosToolStripMenuItem});
+            this.verVuelosToolStripMenuItem,
+            this.verVuelosToolStripMenuItem1,
+            this.verVuelosFinalizadosToolStripMenuItem});
             this.vuelosToolStripMenuItem.Name = "vuelosToolStripMenuItem";
             this.vuelosToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.vuelosToolStripMenuItem.Text = "Vuelos";
@@ -161,7 +169,7 @@
             this.comunToolStripMenuItem,
             this.internacionalToolStripMenuItem});
             this.darDeAltaUnVueloToolStripMenuItem.Name = "darDeAltaUnVueloToolStripMenuItem";
-            this.darDeAltaUnVueloToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.darDeAltaUnVueloToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.darDeAltaUnVueloToolStripMenuItem.Text = "Dar de Alta un Vuelo";
             // 
             // comunToolStripMenuItem
@@ -181,9 +189,32 @@
             // darDeVajaUnVueloToolStripMenuItem
             // 
             this.darDeVajaUnVueloToolStripMenuItem.Name = "darDeVajaUnVueloToolStripMenuItem";
-            this.darDeVajaUnVueloToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.darDeVajaUnVueloToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.darDeVajaUnVueloToolStripMenuItem.Text = "Dar de Vaja un Vuelo";
             this.darDeVajaUnVueloToolStripMenuItem.Click += new System.EventHandler(this.darDeVajaUnVueloToolStripMenuItem_Click);
+            // 
+            // llenarVuelosToolStripMenuItem
+            // 
+            this.llenarVuelosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.comunesToolStripMenuItem1,
+            this.internacionalesToolStripMenuItem1});
+            this.llenarVuelosToolStripMenuItem.Name = "llenarVuelosToolStripMenuItem";
+            this.llenarVuelosToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.llenarVuelosToolStripMenuItem.Text = "LlenarVuelosDePasajeros";
+            // 
+            // comunesToolStripMenuItem1
+            // 
+            this.comunesToolStripMenuItem1.Name = "comunesToolStripMenuItem1";
+            this.comunesToolStripMenuItem1.Size = new System.Drawing.Size(154, 22);
+            this.comunesToolStripMenuItem1.Text = "Comunes";
+            this.comunesToolStripMenuItem1.Click += new System.EventHandler(this.comunesToolStripMenuItem1_Click);
+            // 
+            // internacionalesToolStripMenuItem1
+            // 
+            this.internacionalesToolStripMenuItem1.Name = "internacionalesToolStripMenuItem1";
+            this.internacionalesToolStripMenuItem1.Size = new System.Drawing.Size(154, 22);
+            this.internacionalesToolStripMenuItem1.Text = "Internacionales";
+            this.internacionalesToolStripMenuItem1.Click += new System.EventHandler(this.internacionalesToolStripMenuItem1_Click);
             // 
             // verVuelosToolStripMenuItem
             // 
@@ -191,8 +222,8 @@
             this.comunesToolStripMenuItem,
             this.internacionalesToolStripMenuItem});
             this.verVuelosToolStripMenuItem.Name = "verVuelosToolStripMenuItem";
-            this.verVuelosToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.verVuelosToolStripMenuItem.Text = "Ver vuelos";
+            this.verVuelosToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.verVuelosToolStripMenuItem.Text = "FinalizarVuelos";
             // 
             // comunesToolStripMenuItem
             // 
@@ -208,28 +239,42 @@
             this.internacionalesToolStripMenuItem.Text = "Internacionales";
             this.internacionalesToolStripMenuItem.Click += new System.EventHandler(this.internacionalesToolStripMenuItem_Click);
             // 
-            // llenarVuelosToolStripMenuItem
+            // verVuelosFinalizadosToolStripMenuItem
             // 
-            this.llenarVuelosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.comunesToolStripMenuItem1,
-            this.internacionalesToolStripMenuItem1});
-            this.llenarVuelosToolStripMenuItem.Name = "llenarVuelosToolStripMenuItem";
-            this.llenarVuelosToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.llenarVuelosToolStripMenuItem.Text = "LlenarVuelos";
+            this.verVuelosFinalizadosToolStripMenuItem.Name = "verVuelosFinalizadosToolStripMenuItem";
+            this.verVuelosFinalizadosToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.verVuelosFinalizadosToolStripMenuItem.Text = "Ver Vuelos Finalizados";
+            this.verVuelosFinalizadosToolStripMenuItem.Click += new System.EventHandler(this.verVuelosFinalizadosToolStripMenuItem_Click);
             // 
-            // comunesToolStripMenuItem1
+            // salirToolStripMenuItem
             // 
-            this.comunesToolStripMenuItem1.Name = "comunesToolStripMenuItem1";
-            this.comunesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.comunesToolStripMenuItem1.Text = "Comunes";
-            this.comunesToolStripMenuItem1.Click += new System.EventHandler(this.comunesToolStripMenuItem1_Click);
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
-            // internacionalesToolStripMenuItem1
+            // verVuelosToolStripMenuItem1
             // 
-            this.internacionalesToolStripMenuItem1.Name = "internacionalesToolStripMenuItem1";
-            this.internacionalesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.internacionalesToolStripMenuItem1.Text = "Internacionales";
-            this.internacionalesToolStripMenuItem1.Click += new System.EventHandler(this.internacionalesToolStripMenuItem1_Click);
+            this.verVuelosToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.comunesToolStripMenuItem2,
+            this.internacionalesToolStripMenuItem2});
+            this.verVuelosToolStripMenuItem1.Name = "verVuelosToolStripMenuItem1";
+            this.verVuelosToolStripMenuItem1.Size = new System.Drawing.Size(204, 22);
+            this.verVuelosToolStripMenuItem1.Text = "Ver Vuelos";           
+            // 
+            // comunesToolStripMenuItem2
+            // 
+            this.comunesToolStripMenuItem2.Name = "comunesToolStripMenuItem2";
+            this.comunesToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.comunesToolStripMenuItem2.Text = "Comunes";
+            this.comunesToolStripMenuItem2.Click += new System.EventHandler(this.comunesToolStripMenuItem2_Click);
+            // 
+            // internacionalesToolStripMenuItem2
+            // 
+            this.internacionalesToolStripMenuItem2.Name = "internacionalesToolStripMenuItem2";
+            this.internacionalesToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.internacionalesToolStripMenuItem2.Text = "Internacionales";
+            this.internacionalesToolStripMenuItem2.Click += new System.EventHandler(this.internacionalesToolStripMenuItem2_Click);
             // 
             // Aerolineas
             // 
@@ -275,5 +320,10 @@
         private System.Windows.Forms.ToolStripMenuItem llenarVuelosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem comunesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem internacionalesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem verVuelosFinalizadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verVuelosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem comunesToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem internacionalesToolStripMenuItem2;
     }
 }

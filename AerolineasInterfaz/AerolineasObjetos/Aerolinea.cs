@@ -20,12 +20,16 @@ namespace AerolineasObjetos
         private List<VueloInternacional> vuelosInternacionales = new List<VueloInternacional>();
         public List<VueloInternacional> VuelosInternacionales { get { return vuelosInternacionales; } set { vuelosInternacionales = value; } }
 
-        public Aerolinea(List<Pasajero> cPasajeros, List<Destino> cDestinos, List<Vuelo> cVuelos, List<VueloInternacional> cVuelosI) 
+        private List<VueloInternacional> vuelosFinalizados = new List<VueloInternacional>();
+        public List<VueloInternacional> VuelosFinalizados { get { return vuelosFinalizados; } set { vuelosFinalizados = value; } }
+
+        public Aerolinea(List<Pasajero> cPasajeros, List<Destino> cDestinos, List<Vuelo> cVuelos, List<VueloInternacional> cVuelosI,List<VueloInternacional>cVueloFinalizado) 
         {
             this.pasajeros = cPasajeros;
             this.destinos = cDestinos;
             this.vuelosComunes = cVuelos;
             this.vuelosInternacionales = cVuelosI;
+            this.vuelosFinalizados = cVueloFinalizado;
         }
 
     }

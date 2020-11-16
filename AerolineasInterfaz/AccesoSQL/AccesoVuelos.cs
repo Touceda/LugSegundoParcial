@@ -11,6 +11,8 @@ namespace AccesoSQL
     public class AccesoVuelos
     {
         Conect ConectSQL = new Conect();
+
+        //Trabaja sobre la tabla de los vuelos
         public DataTable BuscarVuelos(bool isComun)
         {
             DataTable VuelosTabla = new DataTable();
@@ -43,7 +45,6 @@ namespace AccesoSQL
             ConectSQL.Desconectar();
             return VuelosTabla;
         }
-
         public bool AñadirVuelo(List<SqlParameter> Parametros,bool isComun)
         {
             ConectSQL.Conectar();
@@ -62,7 +63,6 @@ namespace AccesoSQL
             ConectSQL.Desconectar();
             return true;
         }
-
         public void BorrarVuelo(int id, bool isComun)
         {
             ConectSQL.Conectar();
@@ -81,7 +81,6 @@ namespace AccesoSQL
 
             ConectSQL.Desconectar();
         }
-
         public void ModificarVuelo(List<SqlParameter> Parametros,bool isComun)
         {
             string proc = "VueloInternacionalModificar";
@@ -99,6 +98,8 @@ namespace AccesoSQL
             ConectSQL.Desconectar();
         }
 
+
+        //Trabaja sobre la tabla de los vuelosPasajeros
         public DataTable BuscarVuelosPasajeros(bool isComun)
         {
             DataTable VuelosPasajerosTabla = new DataTable();
@@ -131,7 +132,6 @@ namespace AccesoSQL
             ConectSQL.Desconectar();
             return VuelosPasajerosTabla;
         }
-
         public bool AñadirVueloPasajero(List<SqlParameter> Parametros, bool isComun)
         {
             ConectSQL.Conectar();
@@ -150,6 +150,43 @@ namespace AccesoSQL
             ConectSQL.Desconectar();
             return true;
         }
+
+
+        //Trabaja sobre la tabla de los vuelos finalizados
+        public DataTable BuscarVuelosFinalizados()
+        {
+            DataTable VuelosFinalizadosTabla = new DataTable();
+            ConectSQL.Conectar();
+
+            using (SqlCommand comando = new SqlCommand("VueloFinalizadoLeer", ConectSQL.Conexion))
+            {
+                comando.CommandType = CommandType.StoredProcedure;
+                using (SqlDataAdapter DA = new SqlDataAdapter())
+                {
+                    DA.SelectCommand = comando;
+                    DA.Fill(VuelosFinalizadosTabla); //Ejecuto comando
+                }
+            }
+
+            ConectSQL.Desconectar();
+            return VuelosFinalizadosTabla;
+        }
+        public bool AñadirVueloFinalizado(List<SqlParameter> Parametros)
+        {
+            ConectSQL.Conectar();
+            string proc = "VueloFinalizadoAgregar";
+            using (SqlCommand comando = new SqlCommand(proc, ConectSQL.Conexion))
+            {
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddRange(Parametros.ToArray());
+                comando.ExecuteNonQuery();
+            }
+            ConectSQL.Desconectar();
+            return true;
+        }
+
+        
+
 
     }
 }

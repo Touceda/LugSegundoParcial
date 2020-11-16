@@ -16,6 +16,7 @@ namespace AerolineasImplementacion
         AccesoVuelos ConexionVuelos = new AccesoVuelos();
         Parametros Paramiters = new Parametros();
 
+        //Trabaja sobre la tabla de los vuelos
         public List<Vuelo> VuelosComunesLeer()
         {
             List<Vuelo> Vuelos = new List<Vuelo>();
@@ -67,8 +68,6 @@ namespace AerolineasImplementacion
                 return Vuelos;
             }
         }
-         
-
         public string VueloAñadir(Vuelo Vuelo = null, VueloInternacional VueloInternacional = null)
         {
             try
@@ -110,7 +109,6 @@ namespace AerolineasImplementacion
                 return "Ocurrio un error, intentelo mas tarde";
             }
         }
-
         public bool VueloBorrar(int id, bool isComun)
         {
             try
@@ -123,7 +121,6 @@ namespace AerolineasImplementacion
                 return false;
             }
         }
-
         public void VuelosModificar(int nroVuelo, int ocupacion ,bool isComun)
         {
             try
@@ -141,6 +138,7 @@ namespace AerolineasImplementacion
 
 
 
+        //Trabaja sobre la tabla de los vuelosPasajeros
         public List<VueloPasajero> BuscarVueloPasajeros(bool isComun)
         {
             List<VueloPasajero> vuelosPasajeros = new List<VueloPasajero>();
@@ -197,6 +195,62 @@ namespace AerolineasImplementacion
             }
         }
 
+
+
+        //Trabaja sobre la tabla de los vuelos finalizados
+        public List<VueloInternacional> VuelosFinalizadosLeer()
+        {
+            List<VueloInternacional> VuelosFinalizados = new List<VueloInternacional>();
+            try
+            {
+                DataTable VuelosTabla = ConexionVuelos.BuscarVuelosFinalizados();
+
+                foreach (DataRow fila in VuelosTabla.Rows)
+                {
+                    int nroVuelo = int.Parse(fila[0].ToString());
+                    string destino = fila[1].ToString();
+                    string pais = fila[2].ToString();
+                    string ciudad = fila[3].ToString();
+                    string partida = fila[4].ToString();
+                    string llegada = fila[5].ToString();
+                    int asientos = int.Parse(fila[6].ToString());
+                    int ocupacion = int.Parse(fila[7].ToString());
+                    VuelosFinalizados.Add(new VueloInternacional(destino, partida, llegada, asientos, pais, ciudad, nroVuelo, ocupacion));
+                }
+                return VuelosFinalizados;
+            }
+            catch (Exception)
+            {
+                return VuelosFinalizados;
+            }
+        }
+        public string VueloFinalizado(VueloInternacional VueloInternacional, bool isComun)
+        {
+            try
+            {
+                List<SqlParameter> Parametros = new List<SqlParameter>();             
+                ConexionVuelos.BorrarVuelo(VueloInternacional.nroVuelo, isComun);               
+           
+
+                Parametros.Add(Paramiters.CrearParametro("@destino", VueloInternacional.LugarDestino));
+                Parametros.Add(Paramiters.CrearParametro("@pais", VueloInternacional.Pais));
+                Parametros.Add(Paramiters.CrearParametro("@ciudad", VueloInternacional.Ciudad));
+                Parametros.Add(Paramiters.CrearParametro("@partida", VueloInternacional.Partida));
+                Parametros.Add(Paramiters.CrearParametro("@llegada", VueloInternacional.Llegada));
+                Parametros.Add(Paramiters.CrearParametro("@asientosdisponibles", VueloInternacional.asientos));
+                Parametros.Add(Paramiters.CrearParametro("@porcentajedeocupacion", VueloInternacional.ocupacion));
+
+                if (ConexionVuelos.AñadirVueloFinalizado(Parametros))
+                {
+                    return "Se finalizo el vuelo de forma exitosa";
+                }
+                return "Ocurrio algun error en la base de datos";
+            }
+            catch (Exception)
+            {
+                return "Ocurrio un error, intentelo mas tarde";
+            }
+        }
 
     }
 }

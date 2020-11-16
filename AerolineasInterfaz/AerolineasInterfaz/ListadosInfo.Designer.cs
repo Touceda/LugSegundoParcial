@@ -1,6 +1,6 @@
 ﻿namespace AerolineasInterfaz
 {
-    partial class DestinoListado
+    partial class ListadosInfo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,32 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvDestinosListados = new AerolineasInterfaz.DGV();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.dgvInfo = new AerolineasInterfaz.DGV();
             this.SuspendLayout();
             // 
-            // dgvDestinosListados
+            // dgvInfo
             // 
-            this.dgvDestinosListados.Location = new System.Drawing.Point(12, 12);
-            this.dgvDestinosListados.Name = "dgvDestinosListados";
-            this.dgvDestinosListados.Size = new System.Drawing.Size(436, 426);
-            this.dgvDestinosListados.TabIndex = 0;
+            this.dgvInfo.Location = new System.Drawing.Point(12, 12);
+            this.dgvInfo.Name = "dgvInfo";
+            this.dgvInfo.Size = new System.Drawing.Size(436, 426);
+            this.dgvInfo.TabIndex = 0;
             // 
-            // DestinoListado
+            // ListadosInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(456, 450);
-            this.Controls.Add(this.dgvDestinosListados);
-            this.Name = "DestinoListado";
-            this.Text = "DestinoListado";
-            this.Load += new System.EventHandler(this.DestinoListado_Load);
+            this.ClientSize = new System.Drawing.Size(454, 450);
+            this.Controls.Add(this.dgvInfo);
+            this.Name = "ListadosInfo";
+            this.Text = "ListadosInfo";
+            this.Load += new System.EventHandler(this.ListadosInfo_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DGV dgvDestinosListados;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private DGV dgvInfo;
     }
 }

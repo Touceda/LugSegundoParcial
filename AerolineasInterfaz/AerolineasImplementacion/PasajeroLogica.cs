@@ -61,7 +61,7 @@ namespace AerolineasImplementacion
                 }
                 return "Ocurrio un error en la base de datos";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return "Ocurrio un error, intentelo mas tarde";
             }          

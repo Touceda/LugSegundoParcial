@@ -28,10 +28,10 @@ namespace AerolineasInterfaz
             AerolineaLogica = new AerolineaLogica();
             List<Pasajero> ListaDePasajeros = AerolineaLogica.Pasajeros.PasajeroLeer();
             List<Destino> ListaDeDestinos = AerolineaLogica.Destinos.DestinosLeer();
-            List<Vuelo> ListaDeVuelos = AerolineaLogica.Vuelos.DestinosLeer(true);
-            Aerolinea = new Aerolinea(ListaDePasajeros, ListaDeDestinos, ListaDeVuelos);
-            Refresh();
-            
+            List<Vuelo> ListaDeVuelos = AerolineaLogica.Vuelos.VuelosComunesLeer();
+            List<VueloInternacional> ListaDeVuelosI = AerolineaLogica.Vuelos.VuelosInternacionalesLeer();
+            Aerolinea = new Aerolinea(ListaDePasajeros, ListaDeDestinos, ListaDeVuelos, ListaDeVuelosI);
+            Refresh();        
         }
 
         private void Aerolineas_Paint(object sender, PaintEventArgs e)
@@ -88,9 +88,16 @@ namespace AerolineasInterfaz
         }
         private void verListadoDePasajerosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PasajeroListado PL = new PasajeroListado(Aerolinea.Pasajeros);
-            PL.ShowDialog();
-            PL.Close();
+            List<object> objetos = new List<object>();
+
+            foreach (var obj in Aerolinea.Pasajeros)
+            {
+                objetos.Add(obj);
+            }
+
+            ListadosInfo LI = new ListadosInfo(objetos);
+            LI.ShowDialog();
+            LI.Close();
         }
 
         #endregion
@@ -142,20 +149,111 @@ namespace AerolineasInterfaz
 
         private void verListadoDeDestinosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DestinoListado DL = new DestinoListado(Aerolinea.Destinos);
-            DL.ShowDialog();
-            DL.Close();
+            List<object> objetos = new List<object>();
+
+            foreach (var obj in Aerolinea.Destinos)
+            {
+                objetos.Add(obj);
+            }
+
+            ListadosInfo LI = new ListadosInfo(objetos);
+            LI.ShowDialog();
+            LI.Close();
         }
 
         #endregion
 
         #region Interfaz De Vuelos Comunes
+        //Alta VComun
+        private void comunToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AgregarVueloComun AVG = new AgregarVueloComun(Aerolinea, AerolineaLogica);
+            AVG.ShowDialog();
+            Aerolinea = AVG.aerolinea;
+            AerolineaLogica = AVG.aerolineaLogica;
+            AVG.Close();
+        }
+
+        //Ver Vuelos y finalizar
+        private void comunesToolStripMenuItem_Click(object sender, EventArgs e)
+        {          
+            FinalizarVuelos FV = new FinalizarVuelos(Aerolinea,AerolineaLogica,true);
+            FV.ShowDialog();
+            Aerolinea = FV.aerolinea;
+            AerolineaLogica = FV.aerolineaLogica;
+            FV.Close();
+        }
+
+        //Llenar Vuelo Comun
+        private void comunesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            LlenarVuelo LV = new LlenarVuelo(Aerolinea,AerolineaLogica,true);
+            LV.ShowDialog();
+            Aerolinea = LV.aerolinea;
+            AerolineaLogica = LV.aerolineaLogica;
+            LV.Close();
+        }
 
         #endregion
 
-        #region Interfaz De Vuelos Comunes
+        #region Interfaz De Vuelos Internacionales
+        //Alta Vuelo Internacional
+        private void internacionalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AgregarVueloInternacional AVI = new AgregarVueloInternacional(Aerolinea, AerolineaLogica);
+            AVI.ShowDialog();
+            Aerolinea = AVI.aerolinea;
+            AerolineaLogica = AVI.aerolineaLogica;
+            AVI.Close();
+        }
+        //Ver vuelos internacionales y finalizar
+        private void internacionalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FinalizarVuelos FV = new FinalizarVuelos(Aerolinea, AerolineaLogica,false);
+            FV.ShowDialog();
+            Aerolinea = FV.aerolinea;
+            AerolineaLogica = FV.aerolineaLogica;
+            FV.Close();
+        }
+
+        //Llenar Vuelo Internacional
+        private void internacionalesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            LlenarVuelo LV = new LlenarVuelo(Aerolinea, AerolineaLogica, false);
+            LV.ShowDialog();
+            Aerolinea = LV.aerolinea;
+            AerolineaLogica = LV.aerolineaLogica;
+            LV.Close();
+        }
 
         #endregion
 
+
+
+
+
+
+
+
+
+
+
+        //De baja Vuelos tanto Comunes como Internacionales
+        private void darDeVajaUnVueloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EliminarVuelos EV = new EliminarVuelos(Aerolinea, AerolineaLogica);
+            EV.ShowDialog();
+            Aerolinea = EV.aerolinea;
+            AerolineaLogica = EV.aerolineaLogica;
+            EV.Close();
+        }
+
+        //FinalizarVuelos
+        private void finalizarVuelosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+     
     }
 }

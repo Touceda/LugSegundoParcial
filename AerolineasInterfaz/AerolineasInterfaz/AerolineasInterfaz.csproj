@@ -53,17 +53,23 @@
     <Compile Include="Aerolineas.Designer.cs">
       <DependentUpon>Aerolineas.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgregarVueloComun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarVueloComun.Designer.cs">
+      <DependentUpon>AgregarVueloComun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarVueloInternacional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarVueloInternacional.Designer.cs">
+      <DependentUpon>AgregarVueloInternacional.cs</DependentUpon>
+    </Compile>
     <Compile Include="DestinoBorrar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DestinoBorrar.Designer.cs">
       <DependentUpon>DestinoBorrar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DestinoListado.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DestinoListado.Designer.cs">
-      <DependentUpon>DestinoListado.cs</DependentUpon>
     </Compile>
     <Compile Include="DestinoModificar.cs">
       <SubType>Form</SubType>
@@ -71,24 +77,41 @@
     <Compile Include="DestinoModificar.Designer.cs">
       <DependentUpon>DestinoModificar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Destinos.cs" />
     <Compile Include="DGV.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DGV.Designer.cs">
       <DependentUpon>DGV.cs</DependentUpon>
     </Compile>
+    <Compile Include="EliminarVuelos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EliminarVuelos.Designer.cs">
+      <DependentUpon>EliminarVuelos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinalizarVuelos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinalizarVuelos.Designer.cs">
+      <DependentUpon>FinalizarVuelos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListadosInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadosInfo.Designer.cs">
+      <DependentUpon>ListadosInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LlenarVuelo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LlenarVuelo.Designer.cs">
+      <DependentUpon>LlenarVuelo.cs</DependentUpon>
+    </Compile>
     <Compile Include="PasajeroBorrar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PasajeroBorrar.Designer.cs">
       <DependentUpon>PasajeroBorrar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PasajeroListado.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PasajeroListado.Designer.cs">
-      <DependentUpon>PasajeroListado.cs</DependentUpon>
     </Compile>
     <Compile Include="PasajeroModificar.cs">
       <SubType>Form</SubType>
@@ -101,11 +124,14 @@
     <EmbeddedResource Include="Aerolineas.resx">
       <DependentUpon>Aerolineas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AgregarVueloComun.resx">
+      <DependentUpon>AgregarVueloComun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarVueloInternacional.resx">
+      <DependentUpon>AgregarVueloInternacional.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DestinoBorrar.resx">
       <DependentUpon>DestinoBorrar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DestinoListado.resx">
-      <DependentUpon>DestinoListado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DestinoModificar.resx">
       <DependentUpon>DestinoModificar.cs</DependentUpon>
@@ -113,11 +139,20 @@
     <EmbeddedResource Include="DGV.resx">
       <DependentUpon>DGV.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EliminarVuelos.resx">
+      <DependentUpon>EliminarVuelos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinalizarVuelos.resx">
+      <DependentUpon>FinalizarVuelos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadosInfo.resx">
+      <DependentUpon>ListadosInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LlenarVuelo.resx">
+      <DependentUpon>LlenarVuelo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PasajeroBorrar.resx">
       <DependentUpon>PasajeroBorrar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PasajeroListado.resx">
-      <DependentUpon>PasajeroListado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PasajeroModificar.resx">
       <DependentUpon>PasajeroModificar.cs</DependentUpon>

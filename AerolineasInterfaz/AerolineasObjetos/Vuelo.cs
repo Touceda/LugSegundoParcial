@@ -26,7 +26,7 @@ namespace AerolineasObjetos
 
         public int ocupacion;
         public int Ocupacion { get { return ocupacion; } set { ocupacion = value; } }
-        public Vuelo(int cNroVuelo, string cLugarDestsino, string cPartida, string cLlegada, int cAsientos, int cOcupacion = 0)
+        public Vuelo(string cLugarDestsino, string cPartida, string cLlegada, int cAsientos, int cOcupacion = 0, int cNroVuelo = 0)
         {
             this.nroVuelo = cNroVuelo;
             this.lugadDestino = cLugarDestsino;
@@ -46,8 +46,8 @@ namespace AerolineasObjetos
         private string ciudad;
         public string Ciudad { get { return ciudad; } set { ciudad = value; } }
 
-        public VueloInternacional(int cNroVuelo, string cLugarDestsino, string cPartida, string cLlegada, int cAsientos, int cOcupacion, string cPais, string cCiudad)
-        : base(cNroVuelo, cLugarDestsino, cPartida, cLlegada, cAsientos, cOcupacion)
+        public VueloInternacional(string cLugarDestsino, string cPartida, string cLlegada, int cAsientos, string cPais, string cCiudad, int cNroVuelo = 0, int cOcupacion = 0)
+        : base(cLugarDestsino, cPartida, cLlegada, cAsientos, cOcupacion, cNroVuelo)
         {
             this.NroVuelo = cNroVuelo;
             this.LugarDestino = cLugarDestsino;

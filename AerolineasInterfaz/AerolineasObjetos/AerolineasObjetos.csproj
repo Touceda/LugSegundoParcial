@@ -46,6 +46,7 @@
     <Compile Include="Pasajero.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vuelo.cs" />
+    <Compile Include="VueloPasajero.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

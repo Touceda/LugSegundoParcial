@@ -30,46 +30,126 @@ namespace AccesoSQL
             }
             else
             {
-
-            }
-                 
-           
+                using (SqlCommand comando = new SqlCommand("VueloInternacionalLeer", ConectSQL.Conexion))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    using (SqlDataAdapter DA = new SqlDataAdapter())
+                    {
+                        DA.SelectCommand = comando;
+                        DA.Fill(VuelosTabla); //Ejecuto comando
+                    }
+                }
+            }              
             ConectSQL.Desconectar();
             return VuelosTabla;
         }
-        //public bool AñadirDestino(List<SqlParameter> Parametros)
-        //{
-        //    ConectSQL.Conectar();
-        //    using (SqlCommand comando = new SqlCommand("DestinoAgregar", ConectSQL.Conexion))
-        //    {
-        //        comando.CommandType = CommandType.StoredProcedure;
-        //        comando.Parameters.AddRange(Parametros.ToArray());
-        //        comando.ExecuteNonQuery();
-        //    }
-        //    ConectSQL.Desconectar();
-        //    return true;
-        //}
-        //public void ModificarDestino(List<SqlParameter> Parametros)
-        //{
-        //    ConectSQL.Conectar();
-        //    using (SqlCommand comando = new SqlCommand("DestinoModificar", ConectSQL.Conexion))
-        //    {
-        //        comando.CommandType = CommandType.StoredProcedure;
-        //        comando.Parameters.AddRange(Parametros.ToArray());
-        //        comando.ExecuteNonQuery();
-        //    }
-        //    ConectSQL.Desconectar();
-        //}
-        //public void BorrarDestino(int id)
-        //{
-        //    ConectSQL.Conectar();
-        //    using (SqlCommand comando = new SqlCommand("DestinoBorrar", ConectSQL.Conexion))
-        //    {
-        //        comando.CommandType = CommandType.StoredProcedure;
-        //        comando.Parameters.AddWithValue("@id", id);
-        //        comando.ExecuteNonQuery();
-        //    }
-        //    ConectSQL.Desconectar();
-        //}
+
+        public bool AñadirVuelo(List<SqlParameter> Parametros,bool isComun)
+        {
+            ConectSQL.Conectar();
+            string proc = "VueloInternacionalAgregar";
+            if (isComun)
+            {
+                proc = "VueloComunAgregar";
+            }
+
+            using (SqlCommand comando = new SqlCommand(proc, ConectSQL.Conexion))
+            {
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddRange(Parametros.ToArray());
+                comando.ExecuteNonQuery();
+            }
+            ConectSQL.Desconectar();
+            return true;
+        }
+
+        public void BorrarVuelo(int id, bool isComun)
+        {
+            ConectSQL.Conectar();
+            string proc = "VueloInternacionalBorrar";
+            if (isComun)
+            {
+                proc = "VueloComunBorrar";
+            }
+
+            using (SqlCommand comando = new SqlCommand(proc, ConectSQL.Conexion))
+            {
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@nrovuelo", id);
+                comando.ExecuteNonQuery();
+            }
+
+            ConectSQL.Desconectar();
+        }
+
+        public void ModificarVuelo(List<SqlParameter> Parametros,bool isComun)
+        {
+            string proc = "VueloInternacionalModificar";
+            if (isComun)
+            {
+                proc = "VueloComunModificar";
+            }
+            ConectSQL.Conectar();
+            using (SqlCommand comando = new SqlCommand(proc, ConectSQL.Conexion))
+            {
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddRange(Parametros.ToArray());
+                comando.ExecuteNonQuery();
+            }
+            ConectSQL.Desconectar();
+        }
+
+        public DataTable BuscarVuelosPasajeros(bool isComun)
+        {
+            DataTable VuelosPasajerosTabla = new DataTable();
+            ConectSQL.Conectar();
+
+            if (isComun)
+            {
+                using (SqlCommand comando = new SqlCommand("VueloComunPasajeroLeer", ConectSQL.Conexion))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    using (SqlDataAdapter DA = new SqlDataAdapter())
+                    {
+                        DA.SelectCommand = comando;
+                        DA.Fill(VuelosPasajerosTabla); //Ejecuto comando
+                    }
+                }
+            }
+            else
+            {
+                using (SqlCommand comando = new SqlCommand("VueloInternacionalPasajeroLeer", ConectSQL.Conexion))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    using (SqlDataAdapter DA = new SqlDataAdapter())
+                    {
+                        DA.SelectCommand = comando;
+                        DA.Fill(VuelosPasajerosTabla); //Ejecuto comando
+                    }
+                }
+            }
+            ConectSQL.Desconectar();
+            return VuelosPasajerosTabla;
+        }
+
+        public bool AñadirVueloPasajero(List<SqlParameter> Parametros, bool isComun)
+        {
+            ConectSQL.Conectar();
+            string proc = "VueloInternacionalPasajeroAgregar";
+            if (isComun)
+            {
+                proc = "VueloComunPasajeroAgregar";
+            }
+
+            using (SqlCommand comando = new SqlCommand(proc, ConectSQL.Conexion))
+            {
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddRange(Parametros.ToArray());
+                comando.ExecuteNonQuery();
+            }
+            ConectSQL.Desconectar();
+            return true;
+        }
+
     }
 }
